@@ -4,43 +4,54 @@ class Program
 {
     static void Main(string[] args)
     {
-        // For Parts 1 and 2, 
-         Console.Write("What is the magic number? ");
-         int magicNumber = int.Parse(Console.ReadLine());
-
-         //UN COMMENT THE ENTRY FOR PART 3 BELOW AND COMENT PART 1 ABOVE FOR PART THREE
+        bool playAgain = true;
         
-        // For Part 3, 
-        //Random randomGenerator = new Random();
-        //int magicNumber = randomGenerator.Next(1, 101);
-
-        int guess = -1;
-        int guessCount = 0;
-
-         while (guess != magicNumber)
+        while (playAgain)
         {
-            Console.Write("What is your guess? ");
-            guess = int.Parse(Console.ReadLine());
-             guessCount++;
+            int magicNumber = GenerateRandomNumber(1, 100);
+            int guessCount = 0;
 
-            if (magicNumber > guess)
+            Console.WriteLine("Welcome to Guess My Number game!");
+            Console.WriteLine("I have picked a magic number between 1 and 100.");
+            
+            while (true)
             {
-                Console.WriteLine("Higher");
-            }
-            else if (magicNumber < guess)
-            {
-                Console.WriteLine("Lower");
-            }
-            else
-            {
-                Console.WriteLine("You guessed it!");
-            }
-        } 
+                Console.Write("What is your guess? ");
+                int guess = Convert.ToInt32(Console.ReadLine());
+                guessCount++;
 
-        Console.WriteLine($"You made {guessCount} guesses.");
+                if (guess < magicNumber)
+                {
+                    Console.WriteLine("Higher");
+                }
+                else if (guess > magicNumber)
+                {
+                    Console.WriteLine("Lower");
+                }
+                else
+                {
+                    Console.WriteLine("You guessed it!");
+                    break;
+                }
+            }
 
-        Console.Write("Do you want to play again? (yes/no): ");
+            Console.WriteLine($"You made {guessCount} guesses.");
+            Console.Write("Do you want to play again? (yes/no): ");
             string playAgainInput = Console.ReadLine().ToLower();
+
+            if (playAgainInput != "yes")
+            {
+                playAgain = false;
+            }
+
+            Console.WriteLine();
+        }
+    }
+
+    static int GenerateRandomNumber(int min, int max)
+    {
+        Random random = new Random();
+        return random.Next(min, max + 1);
 
 
     }
