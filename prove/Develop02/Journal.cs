@@ -13,7 +13,12 @@ class Journal {
 
     public void WriteNewEntry() {
         string prompt = promptGenerator.GetRandomPrompt();
+        string motivationalQuote = promptGenerator.GetRandomMotivationalQuote();
+
+        Console.WriteLine("Motivational Quote: " + motivationalQuote);
+         Console.WriteLine("");
         Console.WriteLine("Prompt: " + prompt);
+
         Console.WriteLine("Enter your response:");
         string response = Console.ReadLine();
         string date = DateTime.Now.ToString();
