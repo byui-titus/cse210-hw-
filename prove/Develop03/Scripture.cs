@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 using System;
+=======
+>>>>>>> 6e4ef94abef2a1d1c5719d672bff7c9d75a510d2
 public class Scripture
 {
     public List<Scripture> _scripture = new List<Scripture>();
@@ -7,9 +10,18 @@ public class Scripture
     private string _text;
     public int _index;
     public string _scriptureText;
+<<<<<<< HEAD
     public void LoadScriptures()
     {
         List<string> readText = File.ReadAllLines(_fileName).Where(arg => !string.IsNullOrWhiteSpace(arg)).ToList();
+=======
+    
+    public void LoadScriptures()
+    {
+        List<string> readText = File.ReadAllLines(_fileName)
+                                    .Where(arg => !string.IsNullOrWhiteSpace(arg))
+                                    .ToList();
+>>>>>>> 6e4ef94abef2a1d1c5719d672bff7c9d75a510d2
 
         foreach (string line in readText)
         {
@@ -23,6 +35,10 @@ public class Scripture
             _scripture.Add(entry);
         }
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 6e4ef94abef2a1d1c5719d672bff7c9d75a510d2
     public void ScriptureDisplay()
     {
         foreach (Scripture item in _scripture)
@@ -30,6 +46,10 @@ public class Scripture
             item.ShowScripture();
         }
     }
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 6e4ef94abef2a1d1c5719d672bff7c9d75a510d2
     public void ShowScripture()
     {
         Console.WriteLine($"\n{_text}");
@@ -45,6 +65,7 @@ public class Scripture
     public string RandomScripture()
     {
         _index = GetRandomIndex();
+<<<<<<< HEAD
        return _scriptureText = _scripture[_index]._text;
     }
     public void HideWords()
@@ -61,4 +82,20 @@ public class Scripture
     }
 
 
+=======
+        return _scriptureText = _scripture[_index]._text;
+    }
+    
+    public void HideWords()
+    {
+    }
+    
+    public void GetRenderedText()
+    {
+    }
+    
+    public void IsCompletelyHidden()
+    {
+    }
+>>>>>>> 6e4ef94abef2a1d1c5719d672bff7c9d75a510d2
 }
