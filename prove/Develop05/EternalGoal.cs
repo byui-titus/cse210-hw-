@@ -8,19 +8,19 @@ public class EternalGoal : Goal
     {
     }
 
-    public override bool GetAchievement()
+    public override bool GetCompleted()
     {
         return false;
     }
 
-    public override void SetAchievement(bool achievement)
+    public override void SetCompleted(bool completed)
     {
-        _achievement = false;
+        _completed = false;
     }
 
     public override int completionEvent()
     {
-        SetAchievement(false);
+        SetCompleted(false);
         return GetPoints();
     }
 }

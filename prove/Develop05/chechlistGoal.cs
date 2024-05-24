@@ -1,9 +1,7 @@
-
-
 public class CheckListGoal : Goal
 {
-    private int _achievementCount;
-    private int _achievementGoal;
+    private int _completionCount;
+    private int _completionGoal;
     private int _bonus;
 
     public CheckListGoal() : base()
@@ -11,8 +9,8 @@ public class CheckListGoal : Goal
         Console.WriteLine();
         Console.WriteLine("How many times this goal needs to be accomplished for a bonus? ");
         Console.Write(">> ");
-        int achievementGoal;
-        while (!int.TryParse(Console.ReadLine(), out achievementGoal))
+        int completionGoal;
+        while (!int.TryParse(Console.ReadLine(), out completionGoal))
         {
             Console.WriteLine("Please enter a valid integer value.");
             Console.Write(">> ");
@@ -28,42 +26,42 @@ public class CheckListGoal : Goal
         }
 
         _bonus = bonus;
-        _achievementCount = 0;
-        _achievementGoal = achievementGoal;
+        _completionCount = 0;
+        _completionGoal = completionGoal;
     }
 
-    public CheckListGoal(string name, string description, int points, int achievementGoal, int bonus) : base(name, description, points)
+    public CheckListGoal(string name, string description, int points, int completionGoal, int bonus) : base(name, description, points)
     {
         _bonus = bonus;
-        _achievementCount = 0;
-        _achievementGoal = achievementGoal;
+        _completionCount = 0;
+        _completionGoal = completionGoal;
     }
 
-    public CheckListGoal(string name, string description, int points, int achievementCount, int achievementGoal, int bonus) : base(name, description, points)
+    public CheckListGoal(string name, string description, int points, int completionCount, int completionGoal, int bonus) : base(name, description, points)
     {
         _bonus = bonus;
-        _achievementCount = achievementCount;
-        _achievementGoal = achievementGoal;
+        _completionCount = completionCount;
+        _completionGoal = completionGoal;
     }
 
-    public int GetAchievementCount()
+    public int GetCompletionCount()
     {
-        return _achievementCount;
+        return _completionCount;
     }
 
-    public void SetAchievementCount(int achievementCount)
+    public void SetCompletionCount(int completionCount)
     {
-        _achievementCount = achievementCount;
+        _completionCount = completionCount;
     }
 
-    public int GetAchievementGoal()
+    public int GetCompletionGoal()
     {
-        return _achievementGoal;
+        return _completionGoal;
     }
 
-    public void SetAchievementGoal(int achievementGoal)
+    public void SetCompletionGoal(int completionGoal)
     {
-        _achievementGoal = achievementGoal;
+        _completionGoal = completionGoal;
     }
 
     public int GetBonus()
@@ -76,18 +74,18 @@ public class CheckListGoal : Goal
         _bonus = bonus;
     }
 
-    public void IncrementAchievementCount()
+    public void IncrementCompletionCount()
     {
-        _achievementCount += 1;
+        _completionCount += 1;
     }
 
     public override int completionEvent()
     {
-        if (GetAchievementCount() < GetAchievementGoal())
+        if (GetCompletionCount() < GetCompletionGoal())
         {
-            IncrementAchievementCount();
-            SetAchievement(GetAchievementCount() == GetAchievementGoal());
-            if (GetAchievementCount() == GetAchievementGoal())
+            IncrementCompletionCount();
+            SetCompleted(GetCompletionCount() == GetCompletionGoal());
+            if (GetCompletionCount() == GetCompletionGoal())
                 return GetPoints() + GetBonus();
             else
                 return GetPoints();
@@ -100,11 +98,11 @@ public class CheckListGoal : Goal
 
     public override string Display()
     {
-        return $"[{(GetAchievement() ? 'X' : ' ')}] Checklist: {GetName()} - ({GetDescription()}) [{GetPoints()} points] -- Currently completed: {GetAchievementCount()}/{GetAchievementGoal()}";
+        return $"[{(GetCompleted() ? 'X' : ' ')}] Checklist: {GetName()} - ({GetDescription()}) [{GetPoints()} points] -- Currently completed: {GetCompletionCount()}/{GetCompletionGoal()}";
     }
 
     public override string Stringify()
     {
-        return $"{GetType()}|*|{GetName()}|*|{GetDescription()}|*|{GetPoints()}|*|{GetAchievement()}|*|{GetAchievementCount()}|*|{GetAchievementGoal()}|*|{GetBonus()}";
+        return $"{GetType()}|*|{GetName()}|*|{GetDescription()}|*|{GetPoints()}|*|{GetCompleted()}|*|{GetCompletionCount()}|*|{GetCompletionGoal()}|*|{GetBonus()}";
     }
 }

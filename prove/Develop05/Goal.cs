@@ -7,7 +7,7 @@ public class Goal
     protected string _name;
     protected string _description;
     protected int _points;
-    protected bool _achievement;
+    protected bool _completed;
 
     public Goal()
     {
@@ -37,7 +37,7 @@ public class Goal
         _name = name;
         _description = description;
         _points = points;
-        _achievement = false;
+        _completed = false;
     }
 
     public Goal(string name, string description, int points)
@@ -45,15 +45,15 @@ public class Goal
         _name = name;
         _description = description;
         _points = points;
-        _achievement = false;
+        _completed = false;
     }
 
-    public Goal(string name, string description, int points, bool achievement)
+    public Goal(string name, string description, int points, bool completed)
     {
         _name = name;
         _description = description;
         _points = points;
-        _achievement = achievement;
+        _completed = completed;
     }
 
     public string GetName()
@@ -86,19 +86,19 @@ public class Goal
         _points = points;
     }
 
-    public virtual bool GetAchievement()
+    public virtual bool GetCompleted()
     {
-        return _achievement;
+        return _completed;
     }
 
-    public virtual void SetAchievement(bool achievement)
+    public virtual void SetCompleted(bool completed)
     {
-        _achievement = achievement;
+        _completed = completed;
     }
 
     public virtual int completionEvent()
     {
-        SetAchievement(true);
+        SetCompleted(true);
         return GetPoints();
     }
 
@@ -117,11 +117,11 @@ public class Goal
         {
             type = "Simple: ";
         }
-        return $"[{(GetAchievement() ? 'X' : ' ')}]{type}{_name} - ({_description}) [{_points} points]";
+        return $"[{(GetCompleted() ? 'X' : ' ')}]{type}{_name} - ({_description}) [{_points} points]";
     }
 
     public virtual string Stringify()
     {
-        return $"{GetType()}|*|{GetName()}|*|{GetDescription()}|*|{GetPoints()}|*|{GetAchievement()}";
+        return $"{GetType()}|*|{GetName()}|*|{GetDescription()}|*|{GetPoints()}|*|{GetCompleted()}";
     }
 }

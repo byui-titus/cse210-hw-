@@ -62,12 +62,12 @@ public class GoalManager
                 string name = parts[1];
                 string description = parts[2];
                 int points = int.Parse(parts[3]);
-                bool achievement = bool.Parse(parts[4]);
+                bool completed = bool.Parse(parts[4]);
 
                 if (type.Contains("SimpleGoal"))
                 {
                     SimpleGoal goal = new SimpleGoal(name, description, points);
-                    goal.SetAchievement(achievement);
+                    goal.SetCompleted(completed);
                     _goals.Add(goal);
                 }
                 else if (type.Contains("EternalGoal"))
@@ -77,10 +77,10 @@ public class GoalManager
                 }
                 else if (type.Contains("CheckListGoal"))
                 {
-                    int achievementCount = int.Parse(parts[5]);
-                    int achievementGoal = int.Parse(parts[6]);
+                    int completionCount = int.Parse(parts[5]);
+                    int completionGoal = int.Parse(parts[6]);
                     int bonus = int.Parse(parts[7]);
-                    CheckListGoal goal = new CheckListGoal(name, description, points, achievementCount, achievementGoal, bonus);
+                    CheckListGoal goal = new CheckListGoal(name, description, points, completionCount, completionGoal, bonus);
                     _goals.Add(goal);
                 }
             }
