@@ -1,21 +1,18 @@
 public class GoalManager
 {
-    private List<Goal> _goals = new List<Goal>(); // A list to store all the goals
-    private int _score; // Variable to keep track of the score
+    private List<Goal> _goals = new List<Goal>();
+    private int _score;
 
-    // Method to display the current score
     public void DisplayScore()
     {
         Console.WriteLine($"Your current score is: {_score}");
     }
 
-    // Method to add a goal to the list of goals
     public void AddGoal(Goal goal)
     {
         _goals.Add(goal);
     }
 
-    // Method to display all the goals in the list
     public void DisplayGoals()
     {
         Console.WriteLine("Goals:");
@@ -25,7 +22,6 @@ public class GoalManager
         }
     }
 
-    // Method to record an event by completing a goal
     public void RecordEvent(int goalIndex)
     {
         if (goalIndex < 0 || goalIndex >= _goals.Count)
@@ -38,7 +34,6 @@ public class GoalManager
         _score += goal.completionEvent();
     }
 
-    // Method to save the list of goals and score to a file
     public void SaveGoals(string filename)
     {
         using (StreamWriter writer = new StreamWriter(filename))
@@ -51,7 +46,6 @@ public class GoalManager
         }
     }
 
-    // Method to load the list of goals and score from a file
     public void LoadGoals(string filename)
     {
         _goals.Clear();
